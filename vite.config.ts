@@ -1,6 +1,6 @@
-import {defineConfig} from 'vite'
-import vue from '@vitejs/plugin-vue'
-import svgLoader from 'vite-svg-loader'
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
+import svgLoader from "vite-svg-loader"
 import { join } from "path"
 
 function resolve(dir: string) {
@@ -8,7 +8,7 @@ function resolve(dir: string) {
 }
 
 export default defineConfig({
-    base: '/build/',
+    base: "/",
     resolve: {
         alias: {
             "@": resolve("src"),
@@ -17,10 +17,10 @@ export default defineConfig({
     plugins: [
         vue(),
         svgLoader({
-            defaultImport: 'component'
-        })
+            defaultImport: "component",
+        }),
     ],
     build: {
-        outDir: 'build'
-    }
+        outDir: "build",
+    },
 })

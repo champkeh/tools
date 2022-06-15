@@ -1,0 +1,10 @@
+.cache
+.husky
+.idea
+dist
+build
+env
+node_modules
+typings
+pnpm-lock.yaml
+src/assets/fonts

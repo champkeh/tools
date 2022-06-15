@@ -7,8 +7,14 @@
     <div class="actions">
       <div style="flex: 1">
         <label for="encoding">编码方式:</label>
-        <select id="encoding" v-model="encoding">
-          <option v-for="encoding in encodings" :value="encoding">{{encoding}}</option>
+        <select id="encoding" v-model="currentEncoding">
+          <option
+            v-for="encoding in encodings"
+            :key="encoding"
+            :value="encoding"
+          >
+            {{ encoding }}
+          </option>
         </select>
       </div>
       <div>
@@ -24,21 +30,21 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
-import CopyIcon from '@/icons/copy.svg'
-import {encode, decode, Encoding} from '@/utils/encoding'
+import { ref } from "vue"
+import CopyIcon from "@/icons/copy.svg"
+import { encode, decode, Encoding } from "@/utils/encoding"
 
-const encodings = ['base64', 'lzstring']
-const encoding = ref<Encoding>('base64')
-const text = ref('')
-const result = ref('')
+const encodings = ["base64", "lzstring"]
+const currentEncoding = ref<Encoding>("base64")
+const text = ref("")
+const result = ref("")
 
 function encodeAction() {
-  result.value = encode( text.value, encoding.value)
+  result.value = encode(text.value, currentEncoding.value)
 }
 
 function decodeAction() {
-  result.value = decode(text.value, encoding.value)
+  result.value = decode(text.value, currentEncoding.value)
 }
 </script>
 
@@ -75,7 +81,7 @@ textarea {
   font-family: monospace, serif;
 }
 button {
-  padding: .3em 2em;
+  padding: 0.3em 2em;
   margin: 0 20px;
 }
 
