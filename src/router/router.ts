@@ -3,7 +3,7 @@ import routes from './routes'
 
 const router = createRouter({
     routes: routes,
-    history: createWebHistory('/build/')
+    history: createWebHistory('/')
 })
 
 export default router
