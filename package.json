@@ -1,0 +1,31 @@
+{
+  "name": "vue3-deno-deploy",
+  "version": "1.0.0",
+  "description": "使用deno deploy部署vue3应用",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/champkeh/vue3-deno-deploy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/champkeh/vue3-deno-deploy/issues"
+  },
+  "homepage": "https://github.com/champkeh/vue3-deno-deploy#readme",
+  "dependencies": {
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "typescript": "^4.7.3",
+    "vite": "^2.9.12",
+    "vue-tsc": "^0.37.8"
+  }
+}
