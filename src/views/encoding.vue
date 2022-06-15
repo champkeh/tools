@@ -1,5 +1,4 @@
 <template>
-  <h1>编解码</h1>
   <main>
     <div class="input">
       <textarea v-model="text" rows="20" placeholder="请输入内容"></textarea>
