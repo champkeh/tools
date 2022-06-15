@@ -1,32 +1,26 @@
 <template>
-  <main>
-    <div>{{ name }}</div>
-    <button @click="toggleName">switch</button>
-  </main>
+  <div class="app">
+    <router-view>
+      <template #default="{ Component, route }">
+        <keep-alive>
+          <component
+              :is="Component"
+              v-if="route.meta.keepAlive"
+              :key="route.path"
+          />
+        </keep-alive>
+        <component
+            :is="Component"
+            v-if="!route.meta.keepAlive"
+            :key="route.path"
+        />
+      </template>
+    </router-view>
+  </div>
 </template>
 
-<script setup>
-import {ref, computed} from 'vue'
-
-const on = ref(true)
-const name = computed(() => on.value ? 'Deno' : 'Vue3')
-
-function toggleName() {
-  on.value = !on.value
-}
+<script setup lang="ts">
 </script>
-
-<style scoped>
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-div {
-  margin: 20px;
-}
-button {
-  width: 80%;
-  height: 40px;
-}
+<style>
+@import '@/style/global.css';
 </style>
