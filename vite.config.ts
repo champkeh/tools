@@ -7,20 +7,22 @@ function resolve(dir: string) {
     return join(__dirname, dir)
 }
 
-export default defineConfig({
-    base: "/",
-    resolve: {
-        alias: {
-            "@": resolve("src"),
+export default defineConfig(({ command, mode }) => {
+    return {
+        base: command === "build" ? "/build/" : "/",
+        resolve: {
+            alias: {
+                "@": resolve("src"),
+            },
         },
-    },
-    plugins: [
-        vue(),
-        svgLoader({
-            defaultImport: "component",
-        }),
-    ],
-    build: {
-        outDir: "build",
-    },
+        plugins: [
+            vue(),
+            svgLoader({
+                defaultImport: "component",
+            }),
+        ],
+        build: {
+            outDir: "build",
+        },
+    }
 })
