@@ -4,10 +4,10 @@ async function serveVueApp(req: Request): Promise<Response> {
     const { pathname } = new URL(req.url);
 
     let reqFilePath = ''
-    if (pathname.startsWith('/dist')) {
+    if (pathname.startsWith('/build')) {
         reqFilePath = pathname.slice(1)
     } else {
-        reqFilePath = 'dist/index.html'
+        reqFilePath = 'build/index.html'
     }
 
     const file = await Deno.readFile(reqFilePath);
