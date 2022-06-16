@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/champkeh/vue3-deno-deploy.git"
+    "url": "git+https://github.com/champkeh/tools.git"
   },
   "keywords": [],
   "author": "champkeh",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/champkeh/vue3-deno-deploy/issues"
+    "url": "https://github.com/champkeh/tools/issues"
   },
-  "homepage": "https://github.com/champkeh/vue3-deno-deploy#readme",
+  "homepage": "https://github.com/champkeh/tools#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
     "lz-string": "^1.4.4",
