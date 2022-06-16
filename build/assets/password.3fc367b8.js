@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as t}from"./index.d18189b8.js";const c={};function n(_,d){return a(),t("main",null,"\u656C\u8BF7\u671F\u5F85~")}var o=e(c,[["render",n],["__scopeId","data-v-12fd0ec6"]]);export{o as default};
