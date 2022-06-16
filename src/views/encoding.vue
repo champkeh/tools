@@ -1,7 +1,8 @@
 <template>
   <main>
-    <div class="input">
-      <textarea v-model="text" rows="20" placeholder="请输入内容"></textarea>
+    <div class="input textarea-wrapper">
+      <textarea v-model="input" rows="20" placeholder="请输入内容"></textarea>
+      <span class="count">{{ input.length }}字符</span>
     </div>
     <div class="actions">
       <div style="flex: 1">
@@ -21,9 +22,10 @@
         <button @click="decodeAction">解码</button>
       </div>
     </div>
-    <div class="result">
+    <div class="result textarea-wrapper">
       <textarea disabled :value="result" cols="30" rows="10"></textarea>
       <CopyIcon class="icon icon-copy" />
+      <span class="count">{{ result.length }}字符</span>
     </div>
   </main>
 </template>
@@ -35,15 +37,15 @@ import { encode, decode, Encoding } from "@/utils/encoding"
 
 const encodings = ["base64", "lzstring"]
 const currentEncoding = ref<Encoding>("base64")
-const text = ref("")
+const input = ref("")
 const result = ref("")
 
 function encodeAction() {
-  result.value = encode(text.value, currentEncoding.value)
+  result.value = encode(input.value, currentEncoding.value)
 }
 
 function decodeAction() {
-  result.value = decode(text.value, currentEncoding.value)
+  result.value = decode(input.value, currentEncoding.value)
 }
 </script>
 
@@ -70,6 +72,16 @@ main {
   select {
     height: 30px;
     min-width: 200px;
+  }
+}
+.textarea-wrapper {
+  position: relative;
+
+  .count {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    color: #aaa3a3;
   }
 }
 textarea {

@@ -4,6 +4,7 @@
       <li><RouterLink to="/encoding">编解码</RouterLink></li>
       <li><RouterLink to="/idcard">身份证号码生成器</RouterLink></li>
       <li><RouterLink to="/credit">信用代码生成器</RouterLink></li>
+      <li><RouterLink to="/password">密码生成器</RouterLink></li>
     </ul>
   </nav>
 </template>

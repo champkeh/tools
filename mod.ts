@@ -3,19 +3,45 @@ import { serve } from "https://deno.land/std@0.140.0/http/server.ts"
 async function serveVueApp(req: Request): Promise<Response> {
   const { pathname } = new URL(req.url)
 
-  let reqFilePath = ""
-  if (pathname.startsWith("/build")) {
-    reqFilePath = pathname.slice(1)
-  } else {
-    reqFilePath = "build/index.html"
-  }
+  const reqFilePath = await parseReqFilePath(pathname.replace(/\/$/, ""))
+
+  console.log(reqFilePath)
 
   const file = await Deno.readFile(reqFilePath)
   return new Response(file, {
     headers: {
       "content-type": mimeType(req),
+      "cache-control": reqFilePath.endsWith(".html") ? "no-cache" : "immutable",
     },
   })
+}
+
+async function parseReqFilePath(pathname: string): Promise<string> {
+  let reqFilePath = ""
+  if (pathname.startsWith("/build/")) {
+    reqFilePath = pathname.slice(1)
+    if (await existFile(reqFilePath)) {
+      return reqFilePath
+    } else {
+      return "404.html"
+    }
+  }
+
+  return "build/index.html"
+}
+
+/**
+ * (private)
+ * 静态文件是否存在
+ * @param path 文件路径
+ */
+async function existFile(path: string): Promise<boolean> {
+  try {
+    await Deno.stat(path)
+    return true
+  } catch (_) {
+    return false
+  }
 }
 
 /**
