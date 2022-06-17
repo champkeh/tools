@@ -36,7 +36,7 @@
                 if (permission === "granted") {
                     if (status === 0) {
                         setInterval(() => {
-                            notify('这里是通知内容')
+                            notify('这是通知内容')
                         }, 10000)
                         status = 1
                         statusEl.textContent = '已开启'
@@ -49,7 +49,7 @@
 
     function notify(title) {
         const img = './icon-notify.png';
-        new Notification('标题', { body: title, icon: img });
+        new Notification('这是标题', { body: title, icon: img });
     }
 </script>
 </body>
